@@ -34,13 +34,14 @@
 						<td>{{contact.name}}</td>
 						<td>{{contact.email}}</td>
 						<td>{{contact.number}}</td>
-						<td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button></td>
-						<td><button class="btn btn-warning" ng-click="edit(contact._id)">Edit</button></td>
+						<td><button class="btn btn-danger" ng-click="remove(contact._id,$index)">Remove {{$index+1}} </button></td>
+						<td><button class="btn btn-warning" ng-click="edit($index)">Edit</button></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+		<script src="angular_1.2.29.js"></script>
 		<script src="controllers/controller.js"></script>
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
 	</body>
 </html>
