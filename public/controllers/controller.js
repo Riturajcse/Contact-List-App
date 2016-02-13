@@ -12,29 +12,28 @@ function AppCtrl($scope,$http){
 	$scope.addContact = function(){
 		console.log($scope.contact);
 		$http.post('/contactlist',$scope.contact).success(function(response){
-			console.log(response);
-			refresh();
+			console.log('From Server Add',response);
+			//refresh();
+			$scope.contactlist.push(response);
 		})
 	};
 
-	$scope.remove = function(id){
+	$scope.remove = function(id,index){
 		console.log(id);
 		$http.delete('/contactlist/' + id).success(function(response){
-			refresh();
+			$scope.contactlist.splice(index,1);
 		});
 	};
 
-	$scope.edit = function(id){
-		console.log(id);
-		$http.get('/contactlist/'+id).success(function(response){
-			$scope.contact=response;
-		});
+	$scope.edit = function(index){
+		console.log($scope.contactlist[index]);
+		$scope.contact = $scope.contactlist[index];
 	};
 
 	$scope.update = function(){
 		console.log($scope.contact);
 		$http.put('/contactlist/'+$scope.contact._id,$scope.contact).success(function(response){
-			refresh();
+			//refresh();
 		});
 	};
 
